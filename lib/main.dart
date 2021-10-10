@@ -57,7 +57,24 @@ class _MyHomePageState extends State<MyHomePage> {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            BlocBuilder<CounterCubit, CounterState>(
+            BlocConsumer<CounterCubit, CounterState>(
+              listener: (context, state) {
+                if (state.wasIncremented == true) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Text("Incremented"),
+                      duration: Duration(milliseconds: 300),
+                    ),
+                  );
+                } else if (state.wasIncremented == false) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Text("Decremet"),
+                      duration: Duration(milliseconds: 300),
+                    ),
+                  );
+                }
+              },
               builder: (context, state) {
                 return Text(
                   state.counterValue.toString(),
