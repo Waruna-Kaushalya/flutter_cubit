@@ -13,13 +13,17 @@ dependencies:
     sdk: flutter
   cupertino_icons: ^1.0.2
   flutter_bloc: ^7.3.0
+  bloc_test: ^8.3.0
+  equatable: ^2.0.3
+
 
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^1.0.0
-
+  test: 
+  
 
 flutter:
   uses-material-design: true

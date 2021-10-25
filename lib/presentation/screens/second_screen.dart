@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_bloc_concepts/cubit/counter_cubit.dart';
+import 'package:flutter_bloc_concepts/logic/cubit/counter_cubit.dart';
 
-class SecondPage extends StatelessWidget {
-  static const routeName = '/secondroute';
+class SecondPage extends StatefulWidget {
+  static const routeName = '/secondpageroute';
 
   const SecondPage({Key? key}) : super(key: key);
 
+  @override
+  State<SecondPage> createState() => _SecondPageState();
+}
+
+class _SecondPageState extends State<SecondPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -63,20 +68,19 @@ class SecondPage extends StatelessWidget {
               ],
             ),
             const SizedBox(
-              height: 100,
+              height: 30,
             ),
-            SizedBox(
-              height: 50,
-              child: ElevatedButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                child: const Text(
-                  "Pop",
-                  style: TextStyle(fontSize: 30),
-                ),
-              ),
-            )
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context);
+                // Navigator.of(context).push(MaterialPageRoute(
+                //   builder: (context) => const SecondPage(),
+                // ));
+              },
+              child: const Text("home page"),
+              style: TextButton.styleFrom(
+                  primary: Colors.black, backgroundColor: Colors.green),
+            ),
           ],
         ),
       ),
