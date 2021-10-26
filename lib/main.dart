@@ -26,4 +26,10 @@ class _MyAppState extends State<MyApp> {
       onGenerateRoute: _appRoutes.onGenerateRoute,
     );
   }
+
+  @override
+  void dispose() {
+    _appRoutes.dispose();
+    super.dispose();
+  }
 }

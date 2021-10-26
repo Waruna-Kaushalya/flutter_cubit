@@ -7,6 +7,8 @@ import 'package:flutter_bloc_concepts/presentation/screens/thrid_screen.dart';
 
 class AppRoutes {
   final CounterCubit _counterCubit = CounterCubit();
+  final CounterCubit _counterCubitSecond = CounterCubit();
+
   Route? onGenerateRoute(RouteSettings routeSettings) {
     switch (routeSettings.name) {
       case MyHomePage.routeName:
@@ -20,7 +22,7 @@ class AppRoutes {
       case SecondPage.routeName:
         return MaterialPageRoute(
           builder: (context) => BlocProvider.value(
-            value: _counterCubit,
+            value: _counterCubitSecond,
             child: const SecondPage(),
           ),
         );
@@ -40,5 +42,6 @@ class AppRoutes {
 
   void dispose() {
     _counterCubit.close();
+    _counterCubitSecond.close();
   }
 }
