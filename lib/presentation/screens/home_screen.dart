@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_bloc_concepts/logic/cubit/counter_cubit.dart';
 import 'package:flutter_bloc_concepts/presentation/screens/second_screen.dart';
+import 'package:flutter_bloc_concepts/presentation/screens/thrid_screen.dart';
 
 class MyHomePage extends StatefulWidget {
   static const routeName = '/homeroute';
@@ -78,24 +79,22 @@ class _MyHomePageState extends State<MyHomePage> {
               TextButton(
                 onPressed: () {
                   Navigator.pushNamed(context, SecondPage.routeName);
-
-                  // Navigator.of(context).push(MaterialPageRoute(
-                  //   builder: (context) => const SecondPage(),
-                  // ));
-
-                  // Navigator.of(context).push(
-                  //   MaterialPageRoute(
-                  //     builder: (context) => BlocProvider.value(
-                  //       value: BlocProvider.of<CounterCubit>(context),
-                  //       child: const SecondPage(),
-                  //     ),
-                  //   ),
-                  // );
                 },
                 child: const Text("second page"),
                 style: TextButton.styleFrom(
                     primary: Colors.black, backgroundColor: Colors.green),
-              )
+              ),
+              const SizedBox(
+                height: 30,
+              ),
+              TextButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, ThridPage.routeName);
+                },
+                child: const Text("Thrid page"),
+                style: TextButton.styleFrom(
+                    primary: Colors.black, backgroundColor: Colors.green),
+              ),
             ],
           ),
         ),
