@@ -74,9 +74,6 @@ class _ThridPageState extends State<ThridPage> {
             TextButton(
               onPressed: () {
                 Navigator.pop(context);
-                // Navigator.of(context).push(MaterialPageRoute(
-                //   builder: (context) => const SecondPage(),
-                // ));
               },
               child: const Text("home page"),
               style: TextButton.styleFrom(
