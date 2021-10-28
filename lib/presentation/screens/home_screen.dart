@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_bloc_concepts/constants/enums.dart';
-import 'package:flutter_bloc_concepts/logic/cubit/counter_cubit.dart';
-import 'package:flutter_bloc_concepts/logic/cubit/internet_cubit.dart';
-import 'package:flutter_bloc_concepts/presentation/screens/second_screen.dart';
-import 'package:flutter_bloc_concepts/presentation/screens/thrid_screen.dart';
+
+import '/logic/cubit/cubit_packages.dart';
+import '/presentation/screens/screen_packages.dart';
 
 class MyHomePage extends StatefulWidget {
   static const routeName = '/homeroute';
@@ -39,11 +37,9 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               BlocBuilder<InternetCubit, InternetState>(
                 builder: (context, state) {
-                  if (state is InternetConnected &&
-                      state.connectionType == ConnectionType.wifi) {
+                  if (state is InternetConnectedWiFi) {
                     return const Text("WIFI");
-                  } else if (state is InternetConnected &&
-                      state.connectionType == ConnectionType.mobile) {
+                  } else if (state is InternetConnectedMobile) {
                     return const Text("Mobile");
                   } else if (state is InternetDisconnected) {
                     return const Text("Disconnected");
@@ -105,7 +101,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               TextButton(
                 onPressed: () {
-                  Navigator.pushNamed(context, ThridPage.routeName);
+                  Navigator.pushNamed(context, ThirddPage.routeName);
                 },
                 child: const Text("Thrid page"),
                 style: TextButton.styleFrom(

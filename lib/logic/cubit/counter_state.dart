@@ -5,6 +5,4 @@ class CounterState {
   bool wasIncremented;
 
   CounterState({required this.counterValue, required this.wasIncremented});
-
-  // List<Object> get props => [counterValue, wasIncremented];
 }

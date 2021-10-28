@@ -2,11 +2,9 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:flutter_bloc_concepts/logic/cubit/counter_cubit.dart';
-import 'package:flutter_bloc_concepts/logic/cubit/internet_cubit.dart';
-import 'package:flutter_bloc_concepts/presentation/routes/app_routes.dart';
-
-import 'presentation/screens/home_screen.dart';
+import '/logic/cubit/cubit_packages.dart';
+import '/presentation/screens/screen_packages.dart';
+import '/presentation/routes/app_routes.dart';
 
 void main() {
   runApp(

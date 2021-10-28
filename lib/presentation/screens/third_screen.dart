@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_bloc_concepts/logic/cubit/counter_cubit.dart';
-import 'package:flutter_bloc_concepts/presentation/screens/second_screen.dart';
 
-class ThridPage extends StatefulWidget {
+import '/logic/cubit/cubit_packages.dart';
+import '/presentation/screens/screen_packages.dart';
+
+class ThirddPage extends StatefulWidget {
   static const routeName = '/thridpageroute';
 
-  const ThridPage({Key? key}) : super(key: key);
+  const ThirddPage({Key? key}) : super(key: key);
 
   @override
-  State<ThridPage> createState() => _ThridPageState();
+  State<ThirddPage> createState() => _ThirddPageState();
 }
 
-class _ThridPageState extends State<ThridPage> {
+class _ThirddPageState extends State<ThirddPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
