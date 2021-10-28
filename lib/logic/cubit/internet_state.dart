@@ -11,4 +11,8 @@ class InternetConnected extends InternetState {
   InternetConnected({required this.connectionType});
 }
 
-class InternetDisconnected extends InternetState {}
+class InternetDisconnected extends InternetState {
+  final ConnectionType connectionType;
+
+  InternetDisconnected({required this.connectionType});
+}
