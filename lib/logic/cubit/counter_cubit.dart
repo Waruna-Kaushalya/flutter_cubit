@@ -9,6 +9,10 @@ class CounterCubit extends Cubit<CounterState> {
 
   CounterCubit({required this.internetCubit})
       : super(CounterState(counterValue: 0, wasIncremented: false)) {
+    monitorInternetCubit();
+  }
+
+  void monitorInternetCubit() {
     internetStreamSubscription = internetCubit.stream.listen((internetstate) {
       if (internetstate is InternetConnectedWiFi) {
         increment();
