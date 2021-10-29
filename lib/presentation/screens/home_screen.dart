@@ -16,10 +16,23 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-    return BlocListener<CounterCubit, CounterState>(
-      listener: (context, state) {
-        listnerFunction(state, context);
-      },
+    return MultiBlocListener(
+      listeners: [
+        BlocListener<CounterCubit, CounterState>(
+          listener: (context, state) {
+            listnerFunction(state, context);
+          },
+        ),
+        BlocListener<InternetCubit, InternetState>(
+          listener: (context, state) {
+            if (state is InternetConnectedWiFi) {
+              context.read<CounterCubit>().increment();
+            } else if (state is InternetConnectedMobile) {
+              context.read<CounterCubit>().decrement();
+            }
+          },
+        ),
+      ],
       child: Scaffold(
         appBar: AppBar(
           title: const Text("Home Page"),
@@ -58,33 +71,6 @@ class _MyHomePageState extends State<MyHomePage> {
                   );
                 },
               ),
-              // const SizedBox(
-              //   height: 20,
-              // ),
-              // Row(
-              //   mainAxisAlignment: MainAxisAlignment.center,
-              //   children: [
-              //     FloatingActionButton(
-              //       onPressed: () {
-              //         BlocProvider.of<CounterCubit>(context).decrement();
-              //       },
-              //       tooltip: "Decrement",
-              //       child: const Icon(Icons.remove),
-              //       heroTag: null,
-              //     ),
-              //     const SizedBox(
-              //       width: 10,
-              //     ),
-              //     FloatingActionButton(
-              //       onPressed: () {
-              //         BlocProvider.of<CounterCubit>(context).increment();
-              //       },
-              //       tooltip: "Increment",
-              //       child: const Icon(Icons.add),
-              //       heroTag: null,
-              //     ),
-              //   ],
-              // ),
               const SizedBox(
                 height: 30,
               ),
