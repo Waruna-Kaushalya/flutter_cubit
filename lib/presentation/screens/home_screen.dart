@@ -23,15 +23,15 @@ class _MyHomePageState extends State<MyHomePage> {
             listnerFunction(state, context);
           },
         ),
-        BlocListener<InternetCubit, InternetState>(
-          listener: (context, state) {
-            if (state is InternetConnectedWiFi) {
-              context.read<CounterCubit>().increment();
-            } else if (state is InternetConnectedMobile) {
-              context.read<CounterCubit>().decrement();
-            }
-          },
-        ),
+        // BlocListener<InternetCubit, InternetState>(
+        //   listener: (context, state) {
+        //     if (state is InternetConnectedWiFi) {
+        //       context.read<CounterCubit>().increment();
+        //     } else if (state is InternetConnectedMobile) {
+        //       context.read<CounterCubit>().decrement();
+        //     }
+        //   },
+        // ),
       ],
       child: Scaffold(
         appBar: AppBar(
@@ -70,6 +70,53 @@ class _MyHomePageState extends State<MyHomePage> {
                     ),
                   );
                 },
+              ),
+              const SizedBox(
+                height: 30,
+              ),
+              Builder(builder: (context) {
+                final counterState = context.watch<CounterCubit>().state;
+                final intenetState = context.watch<InternetCubit>().state;
+                if (intenetState is InternetConnectedMobile) {
+                  return Text("Counter:" +
+                      counterState.counterValue.toString() +
+                      "  "
+                          "Internet:Mobile");
+                } else if (intenetState is InternetConnectedWiFi) {
+                  return Text("Counter:" +
+                      counterState.counterValue.toString() +
+                      "  "
+                          "Internet:WiFi");
+                } else {
+                  return Text("Counter:" +
+                      counterState.counterValue.toString() +
+                      "  "
+                          "Internet:Disconnected");
+                }
+              }),
+              const SizedBox(
+                height: 30,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  FloatingActionButton(
+                    heroTag: "decrement",
+                    tooltip: "Decrement",
+                    child: const Icon(Icons.remove),
+                    onPressed: () {
+                      BlocProvider.of<CounterCubit>(context).decrement();
+                    },
+                  ),
+                  FloatingActionButton(
+                    heroTag: "increment",
+                    tooltip: "Increment",
+                    child: const Icon(Icons.add),
+                    onPressed: () {
+                      BlocProvider.of<CounterCubit>(context).increment();
+                    },
+                  ),
+                ],
               ),
               const SizedBox(
                 height: 30,
