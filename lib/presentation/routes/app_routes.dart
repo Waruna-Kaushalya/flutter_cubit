@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc_concepts/presentation/screens/home_screen.dart';
 import 'package:flutter_bloc_concepts/presentation/screens/second_screen.dart';
+import 'package:flutter_bloc_concepts/presentation/screens/settings_screen.dart';
 import 'package:flutter_bloc_concepts/presentation/screens/third_screen.dart';
 
 class AppRoutes {
@@ -20,7 +21,10 @@ class AppRoutes {
         return MaterialPageRoute(
           builder: (context) => const ThirddPage(),
         );
-
+      case SettingsScreen.routeName:
+        return MaterialPageRoute(
+          builder: (context) => const SettingsScreen(),
+        );
       default:
         return null;
     }

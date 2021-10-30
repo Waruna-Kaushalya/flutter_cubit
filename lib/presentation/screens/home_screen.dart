@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_bloc_concepts/presentation/screens/settings_screen.dart';
 
 import '/logic/cubit/cubit_packages.dart';
 import '/presentation/screens/screen_packages.dart';
@@ -23,15 +24,15 @@ class _MyHomePageState extends State<MyHomePage> {
             listnerFunction(state, context);
           },
         ),
-        // BlocListener<InternetCubit, InternetState>(
-        //   listener: (context, state) {
-        //     if (state is InternetConnectedWiFi) {
-        //       context.read<CounterCubit>().increment();
-        //     } else if (state is InternetConnectedMobile) {
-        //       context.read<CounterCubit>().decrement();
-        //     }
-        //   },
-        // ),
+        BlocListener<InternetCubit, InternetState>(
+          listener: (context, state) {
+            if (state is InternetConnectedWiFi) {
+              context.read<CounterCubit>().increment();
+            } else if (state is InternetConnectedMobile) {
+              context.read<CounterCubit>().decrement();
+            }
+          },
+        ),
       ],
       child: Scaffold(
         appBar: AppBar(
@@ -127,7 +128,9 @@ class _MyHomePageState extends State<MyHomePage> {
                 },
                 child: const Text("second page"),
                 style: TextButton.styleFrom(
-                    primary: Colors.black, backgroundColor: Colors.green),
+                  primary: Colors.black,
+                  backgroundColor: Colors.green,
+                ),
               ),
               const SizedBox(
                 height: 30,
@@ -138,7 +141,22 @@ class _MyHomePageState extends State<MyHomePage> {
                 },
                 child: const Text("Thrid page"),
                 style: TextButton.styleFrom(
-                    primary: Colors.black, backgroundColor: Colors.green),
+                  primary: Colors.black,
+                  backgroundColor: Colors.green,
+                ),
+              ),
+              const SizedBox(
+                height: 30,
+              ),
+              TextButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, SettingsScreen.routeName);
+                },
+                child: const Text("Settings Page"),
+                style: TextButton.styleFrom(
+                  primary: Colors.black,
+                  backgroundColor: Colors.orange,
+                ),
               ),
             ],
           ),
