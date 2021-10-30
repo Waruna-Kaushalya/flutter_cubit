@@ -24,15 +24,15 @@ class _MyHomePageState extends State<MyHomePage> {
             listnerFunction(state, context);
           },
         ),
-        BlocListener<InternetCubit, InternetState>(
-          listener: (context, state) {
-            if (state is InternetConnectedWiFi) {
-              context.read<CounterCubit>().increment();
-            } else if (state is InternetConnectedMobile) {
-              context.read<CounterCubit>().decrement();
-            }
-          },
-        ),
+        // BlocListener<InternetCubit, InternetState>(
+        //   listener: (context, state) {
+        //     if (state is InternetConnectedWiFi) {
+        //       context.read<CounterCubit>().increment();
+        //     } else if (state is InternetConnectedMobile) {
+        //       context.read<CounterCubit>().decrement();
+        //     }
+        //   },
+        // ),
       ],
       child: Scaffold(
         appBar: AppBar(

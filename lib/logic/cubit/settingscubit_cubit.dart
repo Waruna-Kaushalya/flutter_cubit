@@ -4,7 +4,8 @@ part 'settingscubit_state.dart';
 
 class SettingsCubit extends Cubit<SettingState> {
   SettingsCubit()
-      : super(SettingState(appNotification: false, emailNotification: false));
+      : super(const SettingState(
+            appNotification: false, emailNotification: false));
 
   void toggleAppNotification(bool newvalue) {
     emit(state.copyWith(appNotification: newvalue));
