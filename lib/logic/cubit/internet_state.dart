@@ -1,12 +1,29 @@
 part of 'internet_cubit.dart';
 
 @immutable
-abstract class InternetState {}
+abstract class InternetState extends Equatable {}
 
-class InternetLoading extends InternetState {}
+class InternetLoading extends InternetState {
+  @override
+  // TODO: implement props
+  List<Object?> get props => [];
+}
 
-class InternetConnectedWiFi extends InternetState {}
+class InternetConnected extends InternetState {
+  final ConnectionType connectionType;
 
-class InternetConnectedMobile extends InternetState {}
+  InternetConnected({required this.connectionType});
 
-class InternetDisconnected extends InternetState {}
+  @override
+  String toString() => 'InternetConnected(connectionType: $connectionType)';
+
+  @override
+  // TODO: implement props
+  List<Object?> get props => [connectionType];
+}
+
+class InternetDisconnected extends InternetState {
+  @override
+  // TODO: implement props
+  List<Object?> get props => [];
+}

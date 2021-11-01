@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import 'package:flutter_bloc_concepts/constants/enums.dart';
 import 'package:flutter_bloc_concepts/presentation/screens/settings_screen.dart';
 
 import '/logic/cubit/cubit_packages.dart';
@@ -42,57 +44,61 @@ class _MyHomePageState extends State<MyHomePage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Text(
-                "Counter Value",
-                style: TextStyle(
-                  fontSize: 30,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              BlocBuilder<InternetCubit, InternetState>(
-                builder: (context, state) {
-                  if (state is InternetConnectedWiFi) {
-                    return const Text("WIFI");
-                  } else if (state is InternetConnectedMobile) {
-                    return const Text("Mobile");
-                  } else if (state is InternetDisconnected) {
-                    return const Text("Disconnected");
-                  }
-                  return const CircularProgressIndicator();
-                },
-              ),
-              BlocBuilder<CounterCubit, CounterState>(
-                builder: (context, state) {
-                  return Text(
-                    state.counterValue.toString(),
-                    style: const TextStyle(
-                      fontSize: 50,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  );
-                },
-              ),
-              const SizedBox(
-                height: 30,
-              ),
+              // const Text(
+              //   "Counter Value",
+              //   style: TextStyle(
+              //     fontSize: 30,
+              //     fontWeight: FontWeight.bold,
+              //   ),
+              // ),
+              // BlocBuilder<InternetCubit, InternetState>(
+              //   builder: (context, state) {
+              //     if (state is InternetConnected &&
+              //         state.connectionType == ConnectionType.wifi) {
+              //       return const Text("WIFI");
+              //     } else if (state is InternetConnected &&
+              //         state.connectionType == ConnectionType.mobile) {
+              //       return const Text("Mobile");
+              //     } else if (state is InternetDisconnected) {
+              //       return const Text("Disconnected");
+              //     }
+              //     return const CircularProgressIndicator();
+              //   },
+              // ),
+              // BlocBuilder<CounterCubit, CounterState>(
+              //   builder: (context, state) {
+              //     return Text(
+              //       state.counterValue.toString(),
+              //       style: const TextStyle(
+              //         fontSize: 50,
+              //         fontWeight: FontWeight.bold,
+              //       ),
+              //     );
+              //   },
+              // ),
+              // const SizedBox(
+              //   height: 30,
+              // ),
               Builder(builder: (context) {
                 final counterState = context.watch<CounterCubit>().state;
                 final intenetState = context.watch<InternetCubit>().state;
-                if (intenetState is InternetConnectedMobile) {
-                  return Text("Counter:" +
-                      counterState.counterValue.toString() +
-                      "  "
-                          "Internet:Mobile");
-                } else if (intenetState is InternetConnectedWiFi) {
-                  return Text("Counter:" +
-                      counterState.counterValue.toString() +
-                      "  "
-                          "Internet:WiFi");
+                if (intenetState is InternetConnected &&
+                    intenetState.connectionType == ConnectionType.mobile) {
+                  return CounterAndNetLabel(
+                    counterState: counterState,
+                    internetType: 'Mobile',
+                  );
+                } else if (intenetState is InternetConnected &&
+                    intenetState.connectionType == ConnectionType.wifi) {
+                  return CounterAndNetLabel(
+                    counterState: counterState,
+                    internetType: 'WiFi',
+                  );
                 } else {
-                  return Text("Counter:" +
-                      counterState.counterValue.toString() +
-                      "  "
-                          "Internet:Disconnected");
+                  return CounterAndNetLabel(
+                    counterState: counterState,
+                    internetType: 'Disconnected',
+                  );
                 }
               }),
               const SizedBox(
@@ -182,4 +188,33 @@ class _MyHomePageState extends State<MyHomePage> {
       );
     }
   }
+}
+
+class CounterAndNetLabel extends StatelessWidget {
+  const CounterAndNetLabel({
+    Key? key,
+    required this.counterState,
+    required this.internetType,
+  }) : super(key: key);
+
+  final CounterState counterState;
+  final String internetType;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Text(
+          "Counter:" + counterState.counterValue.toString(),
+          style: textStyle(),
+        ),
+        Text(
+          "Internet:" + internetType,
+          style: textStyle(),
+        ),
+      ],
+    );
+  }
+
+  TextStyle textStyle() => const TextStyle(color: Colors.black, fontSize: 30.0);
 }
