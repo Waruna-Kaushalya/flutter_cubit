@@ -24,4 +24,9 @@ class SettingsCubit extends Cubit<SettingState> with HydratedMixin {
 
   @override
   Map<String, dynamic>? toJson(SettingState state) => state.toMap();
+  @override
+  void onError(Object error, StackTrace stackTrace) {
+    throw "Err";
+    super.onError(error, stackTrace);
+  }
 }

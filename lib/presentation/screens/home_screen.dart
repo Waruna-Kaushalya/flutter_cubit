@@ -41,8 +41,9 @@ class _MyHomePageState extends State<MyHomePage> {
           title: const Text("Home Page"),
         ),
         body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+          child: ListView(
+            scrollDirection: Axis.vertical,
+            padding: EdgeInsets.all(10),
             children: [
               // const Text(
               //   "Counter Value",
@@ -164,6 +165,33 @@ class _MyHomePageState extends State<MyHomePage> {
                   backgroundColor: Colors.orange,
                 ),
               ),
+              Flex(
+                direction: Axis.vertical,
+                children: [
+                  Text("hello"),
+                  Text("hello"),
+                  Text("hello"),
+                  Text("hello"),
+                  Text("hello"),
+                  Text("hello"),
+                  Text("hello"),
+                  Text("hello"),
+                  Text("hello"),
+                  Text("hello"),
+                  Text("hello"),
+                  Text("hello"),
+                  Text("hello"),
+                  Text("hello"),
+                  Text("hello"),
+                  Text("hello"),
+                  Text("hello"),
+                  Text("hello"),
+                  Text("hello"),
+                  Text("hello"),
+                  Text("hello"),
+                  Text("hello"),
+                ],
+              )
             ],
           ),
         ),

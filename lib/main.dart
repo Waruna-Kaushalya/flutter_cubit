@@ -1,25 +1,42 @@
 import 'package:connectivity_plus/connectivity_plus.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_bloc_concepts/logic/cubit/settingscubit_cubit.dart';
 import 'package:flutter_bloc_concepts/logic/utility/app_bloc_observer.dart';
-import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:path_provider/path_provider.dart';
 
 import '/logic/cubit/cubit_packages.dart';
 import '/presentation/screens/screen_packages.dart';
 import '/presentation/routes/app_routes.dart';
+import 'package:hydrated_bloc/hydrated_bloc.dart';
+
+// void main() async {
+//   WidgetsFlutterBinding.ensureInitialized();
+
+//   HydratedBloc.storage = await HydratedStorage.build(
+//     storageDirectory: await getApplicationDocumentsDirectory(),
+//   );
+
+//   Bloc.observer = AppBlocObserver();
+//   runApp(
+//     MyApp(appRoutes: AppRoutes(), connectivity: Connectivity()),
+//   );
+// }
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  HydratedBloc.storage = await HydratedStorage.build(
+  final storage = await HydratedStorage.build(
     storageDirectory: await getApplicationDocumentsDirectory(),
   );
-  Bloc.observer = AppBlocObserver();
-  runApp(
-    MyApp(appRoutes: AppRoutes(), connectivity: Connectivity()),
-  );
+
+  final observer = AppBlocObserver();
+
+  HydratedBlocOverrides.runZoned(
+      () => runApp(MyApp(appRoutes: AppRoutes(), connectivity: Connectivity())),
+      storage: storage,
+      blocObserver: observer);
 }
 
 class MyApp extends StatelessWidget {
