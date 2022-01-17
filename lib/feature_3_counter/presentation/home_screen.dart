@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:flutter_bloc_concepts/constants/enums.dart';
-import 'package:flutter_bloc_concepts/presentation/screens/settings_screen.dart';
-
-import '/logic/cubit/cubit_packages.dart';
-import '/presentation/screens/screen_packages.dart';
+import 'package:flutter_bloc_concepts/feature_1_settings/presentation/settings_screen.dart';
+import 'package:flutter_bloc_concepts/feature_2_conectivity/logic/cubit/internet_cubit.dart';
+import 'package:flutter_bloc_concepts/feature_3_counter/logic/cubit/counter_cubit.dart';
+import 'package:flutter_bloc_concepts/feature_3_counter/presentation/second_screen.dart';
+import 'package:flutter_bloc_concepts/feature_3_counter/presentation/third_screen.dart';
 
 class MyHomePage extends StatefulWidget {
   static const routeName = '/homeroute';
@@ -43,7 +44,7 @@ class _MyHomePageState extends State<MyHomePage> {
         body: Center(
           child: ListView(
             scrollDirection: Axis.vertical,
-            padding: EdgeInsets.all(10),
+            padding: const EdgeInsets.all(10),
             children: [
               // const Text(
               //   "Counter Value",
@@ -167,7 +168,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               Flex(
                 direction: Axis.vertical,
-                children: [
+                children: const [
                   Text("hello"),
                   Text("hello"),
                   Text("hello"),
