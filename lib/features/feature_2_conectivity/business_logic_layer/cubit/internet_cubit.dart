@@ -1,14 +1,11 @@
-import 'dart:async';
-import 'package:bloc/bloc.dart';
-import 'package:connectivity_plus/connectivity_plus.dart';
-import 'package:equatable/equatable.dart';
-import 'package:flutter_bloc_concepts/constants/enums.dart';
-import 'package:meta/meta.dart';
-
+import 'package:flutter_bloc_concepts/utility/exports.dart';
 part 'internet_state.dart';
 
 class InternetCubit extends Cubit<InternetState> {
+  // final Connectivity connectivity = Connectivity();
+
   final Connectivity connectivity;
+
   late StreamSubscription connectivityStreamSubscription;
 
   InternetCubit({required this.connectivity}) : super(InternetLoading()) {

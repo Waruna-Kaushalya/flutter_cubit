@@ -16,7 +16,8 @@ dependencies:
   connectivity_plus: ^2.0.2
   equatable: ^2.0.3
   hydrated_bloc: ^8.0.0
-  path_provider: ^2.0.6
+  path_provider: ^2.0.8
+ 
 
 
 

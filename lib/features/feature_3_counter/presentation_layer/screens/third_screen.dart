@@ -1,22 +1,20 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_bloc_concepts/feature_3_counter/logic/cubit/counter_cubit.dart';
+import 'package:flutter_bloc_concepts/utility/exports.dart';
 
-class SecondPage extends StatefulWidget {
-  static const routeName = '/secondpageroute';
+class ThirddPage extends StatefulWidget {
+  static const routeName = '/thridpageroute';
 
-  const SecondPage({Key? key}) : super(key: key);
+  const ThirddPage({Key? key}) : super(key: key);
 
   @override
-  State<SecondPage> createState() => _SecondPageState();
+  State<ThirddPage> createState() => _ThirddPageState();
 }
 
-class _SecondPageState extends State<SecondPage> {
+class _ThirddPageState extends State<ThirddPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Second Page"),
+        title: const Text("Thrid Page"),
       ),
       body: Center(
         child: Column(
@@ -75,6 +73,17 @@ class _SecondPageState extends State<SecondPage> {
                 Navigator.pop(context);
               },
               child: const Text("home page"),
+              style: TextButton.styleFrom(
+                  primary: Colors.black, backgroundColor: Colors.green),
+            ),
+            const SizedBox(
+              height: 30,
+            ),
+            TextButton(
+              onPressed: () {
+                Navigator.pushNamed(context, SecondPage.routeName);
+              },
+              child: const Text("Second page"),
               style: TextButton.styleFrom(
                   primary: Colors.black, backgroundColor: Colors.green),
             ),
