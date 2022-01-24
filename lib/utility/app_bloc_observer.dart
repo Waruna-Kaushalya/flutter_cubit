@@ -1,16 +1,19 @@
 import 'package:flutter_bloc_concepts/utility/exports.dart';
 
+//An interface for observing the behavior of Bloc instances.
 class AppBlocObserver extends BlocObserver {
-  @override
-  void onChange(BlocBase bloc, Change change) {
-    // TODO: implement onChange
-    print(change);
-    super.onChange(bloc, change);
-  }
+  // @override
+  // void onTransition(Bloc bloc, Transition transition) {
+  //   super.onTransition(bloc, transition);
+  // }
+  // @override
+  // void onChange(BlocBase bloc, Change change) {
+  //   print(change);
+  //   super.onChange(bloc, change);
+  // }
 
   @override
   void onClose(BlocBase bloc) {
-    // TODO: implement onClose
     print(bloc);
 
     super.onClose(bloc);
@@ -18,28 +21,20 @@ class AppBlocObserver extends BlocObserver {
 
   @override
   void onCreate(BlocBase bloc) {
-    // TODO: implement onCreate
     print(bloc);
     super.onCreate(bloc);
   }
 
   @override
   void onError(BlocBase bloc, Object error, StackTrace stackTrace) {
-    // TODO: implement onError
     print(bloc);
     print(error);
     super.onError(bloc, error, stackTrace);
   }
 
-  @override
-  void onEvent(Bloc bloc, Object? event) {
-    // TODO: implement onEvent
-    super.onEvent(bloc, event);
-  }
+  // @override
+  // void onEvent(Bloc bloc, Object? event) {
+  //   super.onEvent(bloc, event);
+  // }
 
-  @override
-  void onTransition(Bloc bloc, Transition transition) {
-    // TODO: implement onTransition
-    super.onTransition(bloc, transition);
-  }
 }

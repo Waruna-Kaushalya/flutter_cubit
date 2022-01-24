@@ -95,18 +95,25 @@ import 'package:flutter_bloc_concepts/utility/exports.dart';
 
 class SecondPage extends StatelessWidget {
   static const routeName = '/secondpageroute';
-
   // final counterState = context.watch<CounterCubit>().state;
 
   const SecondPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final sttte = CounterCubit().state;
     final intenetState = context.watch<InternetCubit>().state;
     return Scaffold(
       appBar: AppBar(
         title: const Text("Second Page"),
+        actions: [
+          IconButton(
+              onPressed: () {
+                Navigator.pushNamed(context, SettingsScreen.routeName);
+              },
+              icon: const Icon(
+                Icons.settings,
+              ))
+        ],
       ),
       body: Center(
         child: Column(

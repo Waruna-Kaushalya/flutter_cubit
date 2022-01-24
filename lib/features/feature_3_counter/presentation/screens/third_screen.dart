@@ -11,10 +11,25 @@ class ThirddPage extends StatefulWidget {
 
 class _ThirddPageState extends State<ThirddPage> {
   @override
+  void dispose() {
+    print("++++++++++++++++++++++++++++++++++++++++++++++");
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Thrid Page"),
+        actions: [
+          IconButton(
+              onPressed: () {
+                Navigator.pushNamed(context, SettingsScreen.routeName);
+              },
+              icon: const Icon(
+                Icons.settings,
+              ))
+        ],
       ),
       body: Center(
         child: Column(

@@ -18,8 +18,8 @@ class CounterState {
 
   factory CounterState.fromMap(Map<String, dynamic> map) {
     return CounterState(
-      counterValue: map['counterValue'],
-      wasIncremented: map['wasIncremented'],
+      counterValue: map['counterValue']?.toInt() ?? 0,
+      wasIncremented: map['wasIncremented'] ?? false,
     );
   }
 
